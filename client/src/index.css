@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: 3px solid red;
+  height: 100vh;
+}
+
+.error {
+  position: absolute;
+  color: red;
+  font-size: 0.7rem;
+}
