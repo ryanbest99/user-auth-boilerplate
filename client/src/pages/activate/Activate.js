@@ -32,7 +32,7 @@ const Activate = ({ match }) => {
     console.log("clicked");
 
     try {
-      const res = await axios.post("/api/auth/account-activation", {
+      const res = await axios.post("/api/auth/users/account-activation", {
         token,
       });
       console.log("Sign Up Success");
