@@ -25,7 +25,7 @@ const SigninForm = () => {
     const { email, password } = values;
 
     try {
-      const res = await axios.post("/api/auth/login", {
+      const res = await axios.post("/api/auth/users/login", {
         email,
         password,
       });

@@ -28,7 +28,7 @@ const SignupForm = ({ getUserInfo }) => {
     getUserInfo(values);
 
     try {
-      const res = await axios.post("/api/auth/register2", {
+      const res = await axios.post("/api/auth/users/register2", {
         username,
         email,
         password,

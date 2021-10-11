@@ -9,11 +9,11 @@ const {
   users,
 } = require("../controllers/auth");
 
-router.route("/register").post(register);
-router.route("/register2").post(register2);
-router.route("/register2").post(register2);
-router.route("/account-activation").post(accountActivation);
-router.route("/login").post(login);
-router.route("/users").get(users);
+router.route("/users/register").post(register);
+router.route("/users/register2").post(register2);
+router.route("/users/register2").post(register2);
+router.route("/users/account-activation").post(accountActivation);
+router.route("/users/login").post(login);
+router.route("/users/users").get(users);
 
 module.exports = router;
