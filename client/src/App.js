@@ -1,6 +1,12 @@
 import "./index.css";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  HashRouter,
+} from "react-router-dom";
 import Layout from "./containers/layout/Layout";
 import Home from "./pages/home/Home";
 import Signup from "./pages/signup/Signup";
@@ -26,7 +32,7 @@ const App = () => {
   getUserInfo();
 
   return (
-    <Router>
+    <HashRouter>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={Signup} />
@@ -49,7 +55,7 @@ const App = () => {
           />
         )}
       </Switch>
-    </Router>
+    </HashRouter>
   );
 };
 
