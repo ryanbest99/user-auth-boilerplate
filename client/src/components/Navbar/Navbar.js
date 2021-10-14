@@ -5,8 +5,9 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import { lists } from "../../utils/data";
 import { socialIcons } from "../../utils/data";
+import { isAuth, signout } from "../../helpers";
 
-const Navbar = () => {
+const Navbar = ({ children, history }) => {
   const [showLists, setShowLists] = useState(false);
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
@@ -61,24 +62,35 @@ const Navbar = () => {
           </div>
           <div className={styles.navListsBox}>
             <ul className={`${styles.navLists}`}>
-              <li className={styles.navList}>
-                <Link to="/signup2">SignUp</Link>
-              </li>
-              <li className={styles.navList}>
-                <Link to="/signin2">SignIn</Link>
-              </li>
-              {/* {lists.map((list, index) => {
-                const { url, text } = list;
-                return (
-                  <div key={index}>
-                    <li className={styles.navList}>
-                      <a href={url} onClick={handleClick}>
-                        {text}
-                      </a>
-                    </li>
-                  </div>
-                );
-              })} */}
+              {!isAuth() && (
+                <>
+                  <li className={styles.navList}>
+                    <Link to="/signup2">SignUp</Link>
+                  </li>
+                  <li className={styles.navList}>
+                    <Link to="/signin2">SignIn</Link>
+                  </li>
+                </>
+              )}
+              {isAuth() && (
+                <li className={styles.navList}>
+                  <span>Hello {isAuth().username}</span>
+                </li>
+              )}
+              {isAuth() && (
+                <li className={styles.navList}>
+                  <span
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      signout(() => {
+                        history.push("/");
+                      });
+                    }}
+                  >
+                    Signout
+                  </span>
+                </li>
+              )}
             </ul>
           </div>
         </div>

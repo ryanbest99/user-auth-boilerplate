@@ -4,7 +4,8 @@ import { Redirect } from "react-router-dom";
 import Layout from "../../containers/layout/Layout";
 import Layout2 from "../../containers/layout/Layout2";
 import { socialIcons } from "../../utils/data";
-// import { isAuth } from "../../helpers";
+import { isAuth } from "../../helpers";
+import Navbar from "../../components/Navbar/Navbar";
 
 {
   /* {JSON.parse(isAuth())} */
@@ -33,6 +34,7 @@ const Home = () => {
               If you like it, please give me a star
             </p>
             {/* <p>If you like it, please give me a star</p> */}
+
             <button className={styles.btn} onClick={handleClick}>
               Get Started
             </button>

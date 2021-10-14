@@ -9,12 +9,15 @@ const Signup2 = ({ getUserInfo }) => {
     <Layout2>
       <div
         className="container "
-        style={{ border: "1px solid red", maxWidth: "1072px" }}
+        style={{
+          border: "0px solid red",
+          maxWidth: "1072px",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+        }}
       >
-        <div
-          className="row"
-          style={{ border: "0px solid blue", marginTop: "30%" }}
-        >
+        <div className="row">
           <div className="col-md-5">
             <SignupForm getUserInfo={getUserInfo} />
           </div>

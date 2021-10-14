@@ -47,7 +47,7 @@ const Layout = ({ children, history }) => {
   return (
     <>
       {/* {nav()} */}
-      <Navbar />
+      <Navbar history={history} />
       <div>{children}</div>
     </>
   );
