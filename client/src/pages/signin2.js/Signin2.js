@@ -3,14 +3,18 @@ import React from "react";
 import rocketImg from "../../assets/rocket.png";
 import SigninForm from "./SigninForm";
 import Layout from "../../containers/layout/Layout";
+import Layout2 from "../../containers/layout/Layout2";
 // import { isAuth } from "../../helpers";
 
 const Signin2 = () => {
   return (
-    <Layout>
+    <Layout2>
       {/* {isAuth() ? <Redirect to="/" /> : null} */}
-      <div className="container mt-3">
-        <div className="row">
+      <div
+        className="container"
+        style={{ border: "1px solid red", maxWidth: "1072px" }}
+      >
+        <div className="row" style={{ marginTop: "30%" }}>
           <div className="col-md-5">
             <SigninForm />
           </div>
@@ -19,7 +23,7 @@ const Signin2 = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout2>
   );
 };
 

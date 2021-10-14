@@ -1,0 +1,92 @@
+.hero {
+  /* border: 1px solid white; */
+  width: 95vw;
+  max-width: 1172px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-primary-2);
+}
+
+.heroSection {
+  /* border: 1px solid red; */
+  padding: 0 1rem;
+}
+
+.heroSection h1 {
+  font-weight: bold;
+}
+
+.heroSection p {
+  /* border: 1px solid red; */
+  max-width: 30rem;
+  font-weight: bold;
+  color: var(--clr-grey-5);
+}
+
+.btn {
+  border: transparent;
+  padding: 1rem 2rem;
+  background-color: var(--clr-primary-3);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: var(--spacing);
+  border-radius: 30px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transition: var(--transition);
+  font-size: 1.25rem;
+}
+
+.sidebarIcons {
+  /* border: 1px solid #fff; */
+  display: flex;
+  justify-content: start;
+}
+
+.sidebarIcons a {
+  /* border: 1px solid white; */
+  font-size: 1.7rem;
+  /* margin: 1rem 0.5rem; */
+  margin-right: 0.8rem;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+
+.sidebarIcons a:hover {
+  color: var(--clr-red-light);
+}
+
+@media screen and (max-width: 879px) {
+  .heroIcons {
+    display: none;
+  }
+}
+
+.animation {
+  /* border: 2px solid red; */
+  margin-left: 7rem;
+}
+
+.animation img {
+  /* max-width: 40rem; */
+  max-width: 24rem;
+}
+
+@media screen and (max-width: 1340px) {
+  .animation {
+    margin-left: 3rem;
+  }
+}
+
+@media screen and (max-width: 1172px) {
+  .animation {
+    display: none;
+  }
+}

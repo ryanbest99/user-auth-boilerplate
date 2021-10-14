@@ -1,0 +1,251 @@
+.navbar {
+  /* border: 5px solid red; */
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); */
+}
+
+.navCenter {
+  /* border: 3px solid blue; */
+  max-width: 1098px;
+  margin: 0 auto;
+  background: var(--clr-primary-1);
+}
+
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 0.8rem 0 0.8rem;
+  align-items: center;
+  /* padding: 2rem 1rem 0 1rem; */
+  /* border: 2px solid yellow; */
+  z-index: 6;
+}
+
+.navHeader h2 {
+  /* border: 1px solid red; */
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.navHeader a {
+  color: var(--clr-primary-2);
+}
+
+.navBtn {
+  /* margin-bottom: 1rem; */
+  background: transparent;
+  border: transparent;
+  margin-bottom: 1rem;
+  color: var(--clr-primary-2);
+  font-size: 2.4rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  z-index: 2;
+}
+
+.navBtn:hover {
+  /* color: aqua; */
+  color: var(--clr-red-light);
+}
+
+.hideNavBtn {
+  /* display: none; */
+  z-index: -1;
+}
+
+.navListsBox {
+  /* border: 1px solid red; */
+  height: 0;
+  overflow: hidden;
+  transition: all 0.1s linear;
+  z-index: 6;
+}
+
+.navLists {
+  /* border: 3px solid blue; */
+}
+
+.showLists {
+  height: 250px;
+  transition: all 0.3s linear;
+}
+
+.navList {
+  /* border: 1px solid red; */
+  display: block;
+  /* border: 1px solid yellowgreen; */
+  padding: 0.5rem 1rem;
+}
+
+.navList a {
+  /* border: 1px solid aqua; */
+  display: block;
+  text-decoration: none;
+  color: var(--clr-primary-2);
+  font-size: 0.96rem;
+}
+
+.navList:hover {
+  /* background: darkkhaki; */
+  background: var(--clr-red-light);
+  padding-left: 3rem;
+  transition: all 0.3s linear;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* border: 4px solid green; */
+  background: var(--clr-primary-4);
+  width: 70vw;
+  height: 100%;
+  transform: translate(100%);
+  transition: all 0.3s linear;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 1rem;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 2rem 1rem; */
+  padding: 1.2rem 0.8rem 0 0.8rem;
+  align-items: center;
+}
+
+.sideCloseBtn {
+  background: transparent;
+  border: transparent;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sideCloseBtn:hover {
+  transition: all 0.1s linear;
+  transform: rotate(360deg);
+  color: var(--clr-red-light);
+}
+
+.sidebarLists a {
+  display: flex;
+  align-items: center;
+}
+
+.sidebarLists a svg {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.showSidebar {
+  transform: translate(0);
+}
+
+.sidebarList {
+  font-size: 1.2rem;
+}
+
+.sidebarList:hover {
+  background: var(--clr-red-light);
+  transition: all 0.3s linear;
+}
+
+.sidebarList a {
+  display: block;
+  padding: 0.8rem;
+  color: #fff;
+  font-size: 0.99rem;
+  /* font-weight: bold; */
+  letter-spacing: var(--spacing);
+}
+
+.sidebarList a:hover {
+  padding: 1rem 3rem;
+  transition: all 0.3s linear;
+}
+
+.sidebarIcons {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebarIcons a {
+  /* border: 1px solid white; */
+  font-size: 1.5rem;
+  margin: 1rem 0.5rem;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+
+.sidebarIcons a:hover {
+  color: var(--clr-red-light);
+}
+
+.social-icons a:hover {
+  color: var(--clr-primary-1);
+}
+
+@media screen and (min-width: 879px) {
+  .navBtn {
+    display: none;
+  }
+  .navHeader h2 {
+    /* border: 1px solid red; */
+    /* padding-bottom: 1rem; */
+    /* margin-top: 0.5rem; */
+    margin-bottom: 2.5rem;
+  }
+
+  .navListsBox {
+    height: auto !important;
+  }
+
+  .navLists {
+    display: flex;
+    align-items: center;
+  }
+
+  .navCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navList:hover {
+    background: darkkhaki;
+    padding: 0.5rem 1rem;
+    background: none;
+    transition: all 0.3s linear;
+  }
+
+  .navList a:hover {
+    color: var(--clr-red-light);
+    transition: all 0.3s linear;
+  }
+
+  .showSidebar {
+    transform: translate(100%);
+  }
+}
+
+.myLogo {
+  width: 2rem;
+}
+
+.active {
+  visibility: visible;
+  transition: all 0.5s;
+}
+
+.hidden {
+  visibility: hidden;
+  transition: all 0.3s linear;
+  transform: translateY(-100%);
+}
