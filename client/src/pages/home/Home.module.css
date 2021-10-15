@@ -90,3 +90,7 @@
     display: none;
   }
 }
+
+.email {
+  color: var(--clr-red-dark);
+}

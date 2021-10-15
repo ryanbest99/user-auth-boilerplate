@@ -37,7 +37,6 @@ const Navbar = ({ children, history }) => {
     });
   };
 
-  // style={{ top: visible ? "0" : "-80px", transition: "all 0.3s linear" }}
   return (
     <>
       <nav className={`${styles.navbar} `}>

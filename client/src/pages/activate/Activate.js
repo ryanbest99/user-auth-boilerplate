@@ -1,9 +1,11 @@
+import styles from "../home/Home.module.css";
 import React, { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "../../containers/layout/Layout";
+import Layout2 from "../../containers/layout/Layout2";
 import { Redirect } from "react-router";
 
 const Activate = ({ match }) => {
@@ -51,18 +53,28 @@ const Activate = ({ match }) => {
   };
 
   const activationLink = () => (
-    <div>
-      <h1>Hello {username}, Are you ready to activate your account?</h1>
-      <button onClick={handleSubmit}>Activate Account</button>
-    </div>
+    <section className={styles.hero}>
+      <div className={styles.heroSection}>
+        <h1>Hello {username}, Are you ready to activate your account?</h1>
+        <br />
+        <button onClick={handleSubmit} className={styles.btn}>
+          Activate Account
+        </button>
+      </div>
+      <div className={styles.animation}>
+        <img src="/images/background.png" alt="hero-img" />
+      </div>
+    </section>
   );
 
   return (
-    <Layout>
+    <>
+      {/* <Layout2> */}
       {isClicked ? <Redirect to="/signin2" /> : null}
-      {activationLink()}
+      <div>{activationLink()}</div>
       <ToastContainer />
-    </Layout>
+      {/* </Layout2> */}
+    </>
   );
 };
 

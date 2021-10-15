@@ -29,8 +29,6 @@ const App = () => {
     console.log("line 22 user: ", user);
   };
 
-  getUserInfo();
-
   return (
     <HashRouter>
       <Switch>
