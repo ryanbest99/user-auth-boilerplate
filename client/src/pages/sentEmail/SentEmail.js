@@ -15,8 +15,7 @@ const SentEmail = ({ user }) => {
           <h1>Welcome {username}</h1>
           <br />
           <p>
-            Please <span className={styles.email}>check </span> your email to
-            register your account :
+            Please check your email to register your account :
             <span className={styles.email}> {email} </span>
           </p>
         </div>

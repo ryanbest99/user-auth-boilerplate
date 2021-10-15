@@ -10,7 +10,8 @@ Variables
   --clr-primary-2: hsl(220, 39%, 26%);
   --clr-primary-3: hsl(260, 64%, 61%);
   --clr-primary-4: hsl(260, 74%, 75%);
-  --clr-primary-5: hsl(42, 92%, 55%);
+  --clr-primary-5: hsl(260, 81%, 85%);
+  /* --clr-primary-5: hsl(42, 92%, 55%); */
   /* lighter shades of primary color */
   --clr-primary-6: hsl(185, 57%, 50%);
   --clr-primary-7: hsl(184, 65%, 59%);
@@ -18,7 +19,7 @@ Variables
   --clr-primary-9: hsl(185, 94%, 87%);
   --clr-primary-10: hsl(186, 100%, 94%);
   /* darkest grey - used for headings */
-  --clr-grey-1: hsl(241, 89%, 18%);
+  --clr-grey-1: hsl(217, 40%, 96%);
   --clr-grey-2: hsl(241, 69%, 50%);
   --clr-grey-3: hsl(241, 76%, 24%);
   /* --clr-grey-3: hsl(209, 34%, 30%); */
@@ -60,7 +61,8 @@ Global Styles
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: var(--clr-primary-1);
+  /* background: var(--clr-primary-1); */
+  background: var(--clr-grey-1);
   color: var(--clr--1);
   line-height: 1.5;
   font-size: 0.875rem;
