@@ -29,7 +29,16 @@ exports.register2 = async (req, res) => {
       { expiresIn: "10minutes" }
     );
 
-    sendEmail({ email, token });
+    const title = "Please verify your email";
+
+    const text = `
+      <h1>Please use the following link to activate your account</h1>
+      <strong>${process.env.CLIENT_URL}/auth/activate/${token}</strong>
+      <hr />
+      <p>This Email may have sensitive information</p>
+    `;
+
+    sendEmail({ email, token, title, text });
 
     res.status(202).json({
       message: `Email has been sent to ${email} successfully. Follow the instruction to activate your account`,
@@ -99,4 +108,42 @@ exports.users = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false, err: err.message });
   }
+};
+
+exports.forgetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  const userEmail = await User.findOne({ email });
+
+  if (!userEmail) {
+    res.status(400).json({ err: "Invalid Credentials!" });
+  }
+
+  try {
+    const token = jwt.sign({ userEmail }, process.env.JWT_FORGETPASSWORD, {
+      expiresIn: "10minutes",
+    });
+
+    const title = "Please Reset Your Password";
+
+    const text = `
+      <h1>Please use the following link to reset your password</h1>
+      <strong>${process.env.CLIENT_URL}/auth/resetpassword/${token}</strong>
+      <hr />
+      <p>This Email may have sensitive information</p>
+    `;
+
+    sendEmail({ email, title, text });
+
+    res.status(202).json({
+      message: `Email has been sent to ${email} successfully. Follow the instruction to reset your password`,
+      token: token,
+    });
+  } catch (err) {
+    res.status(404).send({ success: false, err: err.message });
+  }
+};
+
+exports.resetPassword = (req, res) => {
+  res.send({ success: true });
 };
