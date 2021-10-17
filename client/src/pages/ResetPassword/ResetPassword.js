@@ -1,16 +1,13 @@
 import React from "react";
-// import { Redirect } from "react-router-dom";
 import rocketImg from "../../assets/rocket.png";
-import SigninForm from "./SigninForm";
+import ResetPasswordForm from "./ResetPasswordForm";
 import Layout2 from "../../containers/layout/Layout2";
-// import { isAuth } from "../../helpers";
 
-const Signin2 = () => {
+const ResetPassword = ({ match }) => {
   return (
     <Layout2>
-      {/* {isAuth() ? <Redirect to="/" /> : null} */}
       <div
-        className="container"
+        className="container "
         style={{
           border: "0px solid red",
           maxWidth: "1072px",
@@ -21,7 +18,7 @@ const Signin2 = () => {
       >
         <div className="row">
           <div className="col-md-5">
-            <SigninForm />
+            <ResetPasswordForm match={match} />
           </div>
           <div className="col-md-7 my-auto">
             <img className="img-fluid w-100" src={rocketImg} alt="" />
@@ -32,4 +29,4 @@ const Signin2 = () => {
   );
 };
 
-export default Signin2;
+export default ResetPassword;

@@ -1,7 +1,9 @@
 require("dotenv").config({ path: "./config.env" });
+const _ = require("lodash");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
+const { reduceRight } = require("lodash");
 
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -113,25 +115,31 @@ exports.users = async (req, res) => {
 exports.forgetPassword = async (req, res) => {
   const { email } = req.body;
 
-  const userEmail = await User.findOne({ email });
+  const user = await User.findOne({ email });
 
-  if (!userEmail) {
+  if (!user) {
     res.status(400).json({ err: "Invalid Credentials!" });
   }
 
   try {
-    const token = jwt.sign({ userEmail }, process.env.JWT_FORGETPASSWORD, {
-      expiresIn: "10minutes",
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_RESET_PASSWORD, {
+      expiresIn: "1minute",
     });
 
     const title = "Please Reset Your Password";
-
     const text = `
       <h1>Please use the following link to reset your password</h1>
       <strong>${process.env.CLIENT_URL}/auth/resetpassword/${token}</strong>
       <hr />
       <p>This Email may have sensitive information</p>
     `;
+
+    const updatedUser = await user.updateOne({ resetPasswordLink: token });
+
+    if (!updatedUser) {
+      console.log(`Reset Password Link Error`, error);
+      return res.status(400).json({ success: false, error: error.message });
+    }
 
     sendEmail({ email, title, text });
 
@@ -145,5 +153,108 @@ exports.forgetPassword = async (req, res) => {
 };
 
 exports.resetPassword = (req, res) => {
-  res.send({ success: true });
+  const { resetPasswordLink, newPassword } = req.body;
+
+  if (resetPasswordLink) {
+    jwt.verify(
+      resetPasswordLink,
+      process.env.JWT_RESET_PASSWORD,
+      function (err, decoded) {
+        if (err) {
+          return (
+            res
+              .status(400)
+              // .json({ err: err.message });
+              .json({ err: "Expired Link. Please Try Again" })
+          );
+        }
+
+        User.findOne({ resetPasswordLink }, (err, user) => {
+          if (err || !user) {
+            return res.status(400).json({ err: "Something Went Wrong" });
+          }
+
+          const updateFields = { password: newPassword, resetPasswordLink: "" };
+          user = _.extend(user, updateFields);
+          user.save((err, result) => {
+            if (err) {
+              return res.status(400).json({
+                error: "Error resetting user password",
+              });
+            }
+            res.json({
+              message: `Great! Now you can login with your new password`,
+            });
+          });
+        });
+      }
+    );
+  }
+};
+
+exports.resetPassword2 = async (req, res) => {
+  const { resetPasswordLink, newPassword } = req.body;
+
+  try {
+    const decoded = jwt.verify(
+      resetPasswordLink,
+      process.env.JWT_RESET_PASSWORD
+    );
+
+    if (!decoded) {
+      return res.json({ error: "Something went wrong! Try Again" });
+    }
+    console.log(decoded);
+
+    let user = await User.findOne({ resetPasswordLink });
+    console.log(user.username);
+
+    const updateFields = { password: newPassword, resetPasswordLink: "" };
+    user = _.extend(user, updateFields);
+    await user.save();
+
+    console.log(user.password);
+
+    try {
+      res.json({ message: "Great! Now you can login with your new password" });
+    } catch (error) {
+      res.status(400).json({ error: "Error for resetting user password" });
+    }
+  } catch (error) {
+    // return res.status(400).json({ error: "Expired Link! Try Again" });
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+exports.resetPassword3 = (req, res) => {
+  const { resetPasswordLink, newPassword } = req.body;
+
+  if (resetPasswordLink) {
+    jwt.verify(resetPasswordLink, process.env.JWT_RESET_PASSWORD, myFunc);
+
+    function myFunc(err, decoded) {
+      if (err) {
+        return res.status(400).json({ err: "Expired Link. Please Try Again" });
+      }
+
+      User.findOne({ resetPasswordLink }, (err, user) => {
+        if (err || !user) {
+          return res.status(400).json({ err: "Something Went Wrong" });
+        }
+
+        const updateFields = { password: newPassword, resetPasswordLink: "" };
+        user = _.extend(user, updateFields);
+        user.save((err, result) => {
+          if (err) {
+            return res.status(400).json({
+              error: "Error resetting user password",
+            });
+          }
+          res.json({
+            message: `Great! Now you can login with your new password`,
+          });
+        });
+      });
+    }
+  }
 };

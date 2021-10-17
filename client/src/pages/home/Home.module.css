@@ -94,3 +94,9 @@
 .email {
   color: var(--clr-red-dark);
 }
+
+.loginBtn {
+  border: transparent;
+  background: transparent;
+  color: var(--clr-red-dark);
+}
