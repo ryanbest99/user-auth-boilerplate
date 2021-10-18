@@ -15,6 +15,8 @@ import Signin from "./pages/signin/Signin";
 import Signin2 from "./pages/signin2.js/Signin2";
 import SentEmail from "./pages/sentEmail/SentEmail";
 import Activate from "./pages/activate/Activate";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -42,9 +44,13 @@ const App = () => {
         />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signin2" component={Signin2} />
+        <Route exact path="/forgotpassword" component={ForgotPassword} />
+        <Route
+          exact
+          path="/auth/resetpassword/:token"
+          component={ResetPassword}
+        />
         <Route exact path="/auth/activate/:token" component={Activate} />
-        {/* <Route exact path="/sentemail" component={SentEmail} /> */}
-
         {user && (
           <Route
             exact

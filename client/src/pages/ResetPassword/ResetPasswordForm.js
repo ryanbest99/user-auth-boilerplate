@@ -1,20 +1,29 @@
 import styles from "../home/Home.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import TextField from "./TextField";
+import TextField from "../signup2/TextField";
 import { ToastContainer, toast } from "react-toastify";
+import jwt from "jsonwebtoken";
 
-const SignupForm = ({ getUserInfo }) => {
+const ResetPasswordForm = ({ match }) => {
   const [isClicked, setIsClicked] = useState(false);
+  const [valuess, setValuess] = useState({
+    newPassword: "",
+    token: "",
+  });
+
+  useEffect(() => {
+    let token = match.params.token;
+    console.log(token);
+    if (token) {
+      setValuess({ ...valuess, token, newPassword });
+    }
+  }, []);
 
   const validate = Yup.object({
-    username: Yup.string()
-      .max(20, "Must be 20 characters or less")
-      .required("Required"),
-    email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 charaters")
       .required("Password is required"),
@@ -23,25 +32,27 @@ const SignupForm = ({ getUserInfo }) => {
       .required("Confirm password is required"),
   });
 
-  const handleSubmit = async (values) => {
-    console.log(values);
-    const { username, email, password } = values;
-    getUserInfo(values);
+  const { token, newPassword } = valuess;
 
+  const handleSubmit = async (values) => {
+    const { password } = values;
     try {
-      const res = await axios.post("/api/auth/users/register2", {
-        username,
-        email,
-        password,
+      const res = await axios.put("/api/auth/users/resetpassword2", {
+        resetPasswordLink: token,
+        newPassword: password,
       });
-      console.log("SignUp Success", res);
-      setIsClicked(true);
+      console.log("Password has been reset", res);
+
+      setTimeout(() => {
+        setIsClicked(true);
+      }, 3000);
+
       toast.success(res.data.message);
     } catch (error) {
       console.log(error.response);
       console.log(error.response.data);
       console.log(error.response.data.err);
-      toast.error(error.response.data.err);
+      toast.error(error.response.data.error);
     }
   };
 
@@ -49,12 +60,10 @@ const SignupForm = ({ getUserInfo }) => {
     <>
       <ToastContainer />
 
-      {isClicked ? <Redirect to="/sentEmail" /> : null}
+      {isClicked ? <Redirect to="/signin2" /> : null}
 
       <Formik
         initialValues={{
-          username: "ryan",
-          email: "ryan.marketing99@gmail.com",
           password: "12345678",
           confirmPassword: "12345678",
         }}
@@ -66,13 +75,11 @@ const SignupForm = ({ getUserInfo }) => {
       >
         {(formik) => (
           <div>
-            <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
+            <h1 className="my-4 font-weight-bold .display-4">Reset Password</h1>
             <Form>
-              <TextField label="Username" name="username" type="text" />
-              <TextField label="Email" name="email" type="email" />
-              <TextField label="Password" name="password" type="password" />
+              <TextField label="New Password" name="password" type="password" />
               <TextField
-                label="Confirm Password"
+                label="Confirm New Password"
                 name="confirmPassword"
                 type="password"
               />
@@ -82,14 +89,11 @@ const SignupForm = ({ getUserInfo }) => {
                 disabled={!formik.isValid}
                 // disabled={formik.isSubmitting || !formik.isValid}
               >
-                Register
+                Submit
               </button>
               <button className="btn btn-danger mt-3 ml-3" type="reset">
                 Reset
               </button>
-              <p style={{ marginTop: "1rem" }}>
-                Already have an account? <Link to="/signin2">Login</Link>
-              </p>
             </Form>
           </div>
         )}
@@ -98,4 +102,4 @@ const SignupForm = ({ getUserInfo }) => {
   );
 };
 
-export default SignupForm;
+export default ResetPasswordForm;

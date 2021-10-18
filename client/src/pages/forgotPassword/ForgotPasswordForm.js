@@ -7,35 +7,27 @@ import TextField from "../signup2/TextField";
 import { ToastContainer, toast } from "react-toastify";
 import { isAuth, authenticate } from "../../helpers";
 
-const SigninForm = () => {
+const ForgotPasswordForm = () => {
   const [values, setValues] = useState({
     email: "ryan.marketing99@gmail.com",
-    password: "12345678",
   });
 
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid").required("Email is required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 charaters")
-      .required("Password is required"),
   });
 
   const handleSubmit = async (values) => {
     console.log(values);
-    const { email, password } = values;
+    const { email } = values;
 
     try {
-      const res = await axios.post("/api/auth/users/login", {
-        email,
-        password,
-      });
-      console.log("Login Success", res);
+      const res = await axios.post("/api/auth/users/forgetpassword", { email });
+      console.log("Sent Message Successfully", res);
 
-      authenticate(res, () => {
-        setValues({ ...values, email: "", password: "" });
-        toast.success(`Hey ${res.data.user.username}. Welcome Back!`);
-      });
-
+      //       authenticate(res, () => {
+      //         setValues({ ...values, email: "", password: "" });
+      //         toast.success(`Hey ${res.data.user.username}. Welcome Back!`);
+      //       });
       toast.success(res.data.message);
     } catch (error) {
       console.log(error.response);
@@ -60,32 +52,31 @@ const SigninForm = () => {
       >
         {(formik) => (
           <div>
-            <h1 className="my-4 font-weight-bold .display-4">Login</h1>
+            <h1 className="my-4 font-weight-bold .display-4">
+              Forgot Password
+            </h1>
             <Form>
-              <TextField label="Email" name="email" type="email" />
-              <TextField label="Password" name="password" type="password" />
               <p
                 style={{
                   marginTop: "0rem",
                   fontSize: "0.9rem",
                 }}
               >
-                <Link to="/forgotpassword">Forgot Password</Link>
+                Please enter the email address you register your account with.
+                We will send you reset password confirmation to this email
               </p>
+              <TextField label="Email" name="email" type="email" />
               <button
                 className="btn btn-dark "
                 type="submit"
                 disabled={!formik.isValid}
                 // disabled={formik.isSubmitting || !formik.isValid}
               >
-                Login
+                Submit
               </button>
               <button className="btn btn-danger ml-3" type="reset">
                 Reset
               </button>
-              <p style={{ marginTop: "1rem" }}>
-                Don't have an account? <Link to="/signup2">Sign Up</Link>
-              </p>
             </Form>
           </div>
         )}
@@ -94,4 +85,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default ForgotPasswordForm;
