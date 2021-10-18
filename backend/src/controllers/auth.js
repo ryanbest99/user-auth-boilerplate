@@ -117,13 +117,8 @@ exports.forgetPassword = async (req, res) => {
 
   const user = await User.findOne({ email });
 
-<<<<<<< HEAD
-  if (!userEmail) {
-    return res.status(400).json({ err: "Invalid Credentials!" });
-=======
   if (!user) {
     res.status(400).json({ err: "Invalid Credentials!" });
->>>>>>> de7bad8322a5d2af77dd2a1584013b85f44f30d3
   }
 
   try {
