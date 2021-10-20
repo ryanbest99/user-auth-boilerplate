@@ -4,14 +4,11 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/chingu-voyages/v29-toucans-team-02">
-  <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/chingu-voyages/v29-toucans-team-02/total?logo=GitHub&style=flat-square">
-  <a href="https://user-auth-1.herokuapp.com/#/">
-  <img alt="GitHub last commit" src="https://img.shields.io/website?up_message=https%3A%2F%2Fwikitrip-v29-toucans02.netlify.app%2F&url=https%3A%2F%2Fwikitrip-v29-toucans02.netlify.app%2F">
-  </a>
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/chingu-voyages/v29-toucans-team-02?logo=GitHub&style=flat-square">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/chingu-voyages/v29-toucans-team-02?logo=GitHub&style=flat-square">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/ryanbest99/user-auth-forquestion">
+  
+  <img alt="Website" src="https://img.shields.io/website?up_color=red&up_message=https%3A%2F%2Fgithub.com%2Fryanbest99%2Fuser-auth-forquestion&url=https%3A%2F%2Fgithub.com%2Fryanbest99%2Fuser-auth-forquestion">
 
+  <img alt="repo-size" src="https://img.shields.io/github/repo-size/ryanbest99/user-auth-forquestion">
 </p>
 
 <br>
@@ -21,10 +18,6 @@ An **User Authentication boilerplate** that has register with email verification
 It is a responsive web app aimed at helping people build user authentication features easily by taking the source code in the repository.
 
 ![User Auth Tech image](landing.png)
-
-## Demo:
-
-https://user-auth-1.herokuapp.com/#/
 
 ## Table of Contents
 
