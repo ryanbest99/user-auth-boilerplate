@@ -2,6 +2,8 @@
 
 An User Authentication boilerplate that has register with email verification process, login with jwt authentication, sign out, forget password and reset password features with sendgrid email API.
 
+![User Auth Tech image](landing.png)
+
 ## Overview:
 
 User Auth Boilerplate is a responsive web app aimed at helping people build user authentication features easily by taking the source code in the repository.
