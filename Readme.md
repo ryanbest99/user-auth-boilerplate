@@ -6,7 +6,7 @@
 <p align="center">
   <img alt="GitHub License" src="https://img.shields.io/github/license/ryanbest99/user-auth-forquestion">
   
-  <img alt="Website" src="https://img.shields.io/website?up_color=red&up_message=https%3A%2F%2Fgithub.com%2Fryanbest99%2Fuser-auth-forquestion&url=https%3A%2F%2Fgithub.com%2Fryanbest99%2Fuser-auth-forquestion">
+  <img alt="Website" src="https://img.shields.io/website?up_color=red&up_message=https%3A%2F%2Fuser-auth-1.herokuapp.com%2F%23%2F&url=https%3A%2F%2Fuser-auth-1.herokuapp.com%2F%23%2F">
 
   <img alt="repo-size" src="https://img.shields.io/github/repo-size/ryanbest99/user-auth-forquestion">
 </p>
