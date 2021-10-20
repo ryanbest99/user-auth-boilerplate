@@ -12,12 +12,11 @@ const SentEmail = ({ user }) => {
     <Layout2>
       <section className={styles.hero}>
         <div className={styles.heroSection}>
-          <h1>Welcome {username}</h1>
+          {/* <h1>Please Check</h1> */}
+          <h1>A verification email has been sent to:</h1>
+          {/* <h1>your email</h1> */}
           <br />
-          <p>
-            Please check your email to register your account :
-            <span className={styles.email}> {email} </span>
-          </p>
+          <h3>{email}</h3>
         </div>
         <div className={styles.animation}>
           <img src="/images/background.png" alt="hero-img" />

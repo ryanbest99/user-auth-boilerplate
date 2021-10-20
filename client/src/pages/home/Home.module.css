@@ -1,5 +1,5 @@
 .hero {
-  /* border: 1px solid white; */
+  /* border: 1px solid red; */
   width: 95vw;
   max-width: 1172px;
   height: 100vh;
@@ -16,6 +16,14 @@
 }
 
 .heroSection h1 {
+  /* font-weight: bold; */
+  max-width: 400px;
+  /* width: 20rem; */
+  /* max-width: 30rem; */
+}
+
+.heroSection h3 {
+  color: var(--clr-red-dark);
   font-weight: bold;
 }
 
