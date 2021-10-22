@@ -46,7 +46,8 @@ It is a responsive web app aimed at helping people build user authentication fea
 
 ### Architecture
 
-![User Auth Tech Architecture](archi.png)
+![User Auth Tech Architecture](3tier2.jpg)
+![User Auth MERN Architecture](mvc.jpg)
 
 ### Technologies
 
