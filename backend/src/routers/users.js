@@ -5,6 +5,7 @@ const {
   register,
   register2,
   accountActivation,
+  accountActivation2,
   login,
   users,
   forgetPassword,
@@ -16,6 +17,7 @@ const {
 router.route("/users/register").post(register);
 router.route("/users/register2").post(register2);
 router.route("/users/account-activation").post(accountActivation);
+router.route("/users/account-activation2").post(accountActivation2);
 router.route("/users/login").post(login);
 router.route("/users/users").get(users);
 router.route("/users/forgetpassword").post(forgetPassword);

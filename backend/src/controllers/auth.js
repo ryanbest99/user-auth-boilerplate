@@ -85,6 +85,34 @@ exports.accountActivation = (req, res) => {
   }
 };
 
+exports.accountActivation2 = async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION);
+
+    if (!decoded) {
+      return res.status(400).json({ error: "Something went wrong! Try Again" });
+    }
+    const { username, email, password } = jwt.decode(token);
+
+    try {
+      const newUser = await User.create({ username, email, password });
+
+      res.status(200).json({
+        success: true,
+        newUser,
+        token,
+        message: "Congrats! You are signed-up. Please Sign-in",
+      });
+    } catch (err) {
+      res.status(500).json({ success: false, err });
+    }
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
