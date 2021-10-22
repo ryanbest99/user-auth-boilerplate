@@ -9,8 +9,8 @@ import { isAuth, authenticate } from "../../helpers";
 
 const SigninForm = () => {
   const [values, setValues] = useState({
-    email: "ryan.marketing99@gmail.com",
-    password: "12345678",
+    email: "",
+    password: "",
   });
 
   const validate = Yup.object({

@@ -9,7 +9,7 @@ import { isAuth, authenticate } from "../../helpers";
 
 const ForgotPasswordForm = () => {
   const [values, setValues] = useState({
-    email: "ryan.marketing99@gmail.com",
+    email: "",
   });
 
   const validate = Yup.object({
