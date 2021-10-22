@@ -64,8 +64,8 @@ const ResetPasswordForm = ({ match }) => {
 
       <Formik
         initialValues={{
-          password: "12345678",
-          confirmPassword: "12345678",
+          password: "",
+          confirmPassword: "",
         }}
         validationSchema={validate}
         onSubmit={(values) => {
