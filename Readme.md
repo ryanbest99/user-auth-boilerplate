@@ -21,6 +21,11 @@ It is a responsive web app aimed at helping people build user authentication fea
 
 ![User Auth Tech image](landing.png)
 
+## Demo
+
+- https://user-auth-1.herokuapp.com/#/
+- https://youtu.be/Cc5xRzErXU8 (Youtube)
+
 ## Table of Contents
 
 - [Features](#features)
