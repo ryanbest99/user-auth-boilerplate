@@ -151,7 +151,7 @@ State Management Update with Redux:
 
 ## Author
 
-- Ryan Park[[Portfolio](https://portfolio-practice-01.herokuapp.com/)] [[LinkedIn](https://www.linkedin.com/in/ryanbest99/)]
+- Ryan Park[[Portfolio](https://ryanbest99.com/)] [[LinkedIn](https://www.linkedin.com/in/ryanbest99/)]
 
 ---
 
